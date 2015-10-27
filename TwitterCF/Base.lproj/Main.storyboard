@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -22,33 +23,75 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" textLabel="v6k-k3-SDw" detailTextLabel="nPC-Da-k3j" style="IBUITableViewCellStyleSubtitle" id="NSw-Ln-PRl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" id="NSw-Ln-PRl" customClass="TweetTableViewCell" customModule="TwitterCF" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NSw-Ln-PRl" id="DaS-Oc-VZ5">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v6k-k3-SDw">
-                                                    <rect key="frame" x="15" y="5" width="32" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-uL-U9o">
+                                                    <rect key="frame" x="82" y="0.0" width="43" height="22"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nPC-Da-k3j">
-                                                    <rect key="frame" x="15" y="25" width="41" height="14"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOn-pf-rbl">
+                                                    <rect key="frame" x="82" y="30" width="43" height="21"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNk-c7-emd">
+                                                    <rect key="frame" x="133" y="0.0" width="459" height="43"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sFI-04-xo7">
+                                                    <rect key="frame" x="29" y="-2" width="45" height="46"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="G43-uP-K7t"/>
+                                                        <constraint firstAttribute="width" constant="45" id="gTW-j5-reW"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="sFI-04-xo7" secondAttribute="trailing" constant="33" id="0BI-Le-WOm"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HOn-pf-rbl" secondAttribute="bottom" constant="-8" id="6Yu-6l-Ixf"/>
+                                                <constraint firstItem="RNk-c7-emd" firstAttribute="leading" secondItem="HOn-pf-rbl" secondAttribute="trailing" constant="8" symbolic="YES" id="7RK-NU-Jot"/>
+                                                <constraint firstItem="sFI-04-xo7" firstAttribute="centerY" secondItem="DaS-Oc-VZ5" secondAttribute="centerY" id="9J2-24-Cad"/>
+                                                <constraint firstItem="RNk-c7-emd" firstAttribute="leading" secondItem="bH9-uL-U9o" secondAttribute="trailing" constant="8" symbolic="YES" id="U3S-2z-usC"/>
+                                                <constraint firstItem="sFI-04-xo7" firstAttribute="leading" secondItem="DaS-Oc-VZ5" secondAttribute="leadingMargin" constant="21" id="V9W-63-M1S"/>
+                                                <constraint firstItem="HOn-pf-rbl" firstAttribute="leading" secondItem="sFI-04-xo7" secondAttribute="trailing" constant="8" symbolic="YES" id="W7Q-g3-74T"/>
+                                                <constraint firstItem="RNk-c7-emd" firstAttribute="bottom" secondItem="DaS-Oc-VZ5" secondAttribute="bottomMargin" id="XeT-Im-IGj"/>
+                                                <constraint firstItem="HOn-pf-rbl" firstAttribute="top" secondItem="bH9-uL-U9o" secondAttribute="bottom" constant="8" symbolic="YES" id="f58-pX-sed"/>
+                                                <constraint firstItem="RNk-c7-emd" firstAttribute="top" secondItem="DaS-Oc-VZ5" secondAttribute="topMargin" constant="-8" id="kte-mf-YBi"/>
+                                                <constraint firstItem="HOn-pf-rbl" firstAttribute="top" secondItem="bH9-uL-U9o" secondAttribute="bottom" constant="8" symbolic="YES" id="mLn-vy-Wlu"/>
+                                                <constraint firstItem="RNk-c7-emd" firstAttribute="trailing" secondItem="DaS-Oc-VZ5" secondAttribute="trailingMargin" id="q7C-1f-W5K"/>
+                                                <constraint firstItem="bH9-uL-U9o" firstAttribute="top" secondItem="DaS-Oc-VZ5" secondAttribute="topMargin" constant="-8" id="sSN-GM-KFk"/>
+                                                <constraint firstItem="sFI-04-xo7" firstAttribute="bottom" secondItem="HOn-pf-rbl" secondAttribute="bottom" constant="-7" id="xzo-1H-WbW"/>
+                                                <constraint firstItem="bH9-uL-U9o" firstAttribute="leading" secondItem="sFI-04-xo7" secondAttribute="trailing" constant="8" symbolic="YES" id="zXW-wA-ZQ3"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="0BI-Le-WOm"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="idLabel" destination="HOn-pf-rbl" id="8eR-cg-sJr"/>
+                                            <outlet property="profileImage" destination="sFI-04-xo7" id="rIf-JR-1V0"/>
+                                            <outlet property="tweetTextLabel" destination="RNk-c7-emd" id="czd-WQ-EKG"/>
+                                            <outlet property="userName" destination="bH9-uL-U9o" id="lte-Lu-AgM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

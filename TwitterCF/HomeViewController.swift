@@ -10,6 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
     @IBOutlet weak var tableView: UITableView!
     var tweets = [Tweet]()
     
@@ -21,7 +22,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         self.setupTableView()
         self.getTweets()
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,18 +57,35 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("num tweets")
+        
+        print(self.tweets.count)
         return self.tweets.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as? TweetTableViewCell
         
         let tweet = self.tweets[indexPath.row]
         
-        cell.textLabel?.text = tweet.text
-        cell.detailTextLabel?.text = "Tweet id is: \(tweet.id)"
+        if let tweetCell = cell {
         
-        return cell
+        tweetCell.userName?.text = tweet.userName
+            print(tweet.profileImageURL)
+    if let url = NSURL(string: "\(tweet.profileImageURL)") {
+        
+                if let data = NSData(contentsOfURL: url) {
+//                    tweetCell.profileImage?.image.contentMode = UIViewContentMode.ScaleAspectFit
+                    tweetCell.profileImage.image = UIImage(data: data)
+                }
+            }
+//        tweetCell.profileImage?.image = tweet.profileImageURL
+        tweetCell.tweetTextLabel?.text = tweet.text
+        tweetCell.idLabel?.text = "Tweet id is: \(tweet.id)"
+            
+
+        }
+        return cell!
     }
 
 }

@@ -11,9 +11,13 @@ import Foundation
 class Tweet {
     let text: String
     let id: String
+    let userName: String
+    let profileImageURL: NSURL
     
-    init(text: String, id: String) {
+    init(text: String, id: String, userName: String, profileImageURL: NSURL) {
         self.text = text
         self.id = id
+        self.userName = userName
+        self.profileImageURL = profileImageURL
     }
 }

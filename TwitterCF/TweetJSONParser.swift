@@ -20,11 +20,14 @@ class TweetJSONParser {
                 var tweets = [Tweet]()
                 
                 for tweetObject in rootObject {
-                    
-                    if let text = tweetObject["text"] as? String, id = tweetObject["id_str"] as? String {
-                        
-                        let tweet = Tweet(text: text, id: id)
-                        tweets.append(tweet)
+                    if let text = tweetObject["text"] as? String,
+                        id = tweetObject["id_str"] as? String ,
+                        user = tweetObject["user"] as? [String:AnyObject],
+                        userName = user["name"] as? String,
+                        profileImageURLString = user["profile_image_url_https"] as? String,
+                        profileImageURL = NSURL(string: profileImageURLString){
+                            let tweet = Tweet(text: text, id: id, userName: userName, profileImageURL: profileImageURL)
+                            tweets.append(tweet)
                     }
                 }
                 return tweets
