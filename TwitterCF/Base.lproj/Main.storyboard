@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Tweet Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TweetHomeViewController" id="BYZ-38-t0r" customClass="TweetHomeViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -30,18 +30,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOn-pf-rbl">
-                                                    <rect key="frame" x="59" y="50" width="533" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNk-c7-emd">
+                                                    <rect key="frame" x="61" y="0.0" width="531" height="53"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNk-c7-emd">
-                                                    <rect key="frame" x="61" y="0.0" width="531" height="42"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sFI-04-xo7">
@@ -54,10 +47,17 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-uL-U9o">
-                                                    <rect key="frame" x="8" y="61" width="43" height="21"/>
+                                                    <rect key="frame" x="8" y="61" width="45" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOn-pf-rbl">
+                                                    <rect key="frame" x="61" y="61" width="531" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -67,12 +67,13 @@
                                                 <constraint firstItem="bH9-uL-U9o" firstAttribute="top" secondItem="sFI-04-xo7" secondAttribute="bottom" constant="8" symbolic="YES" id="1aY-9V-7fm"/>
                                                 <constraint firstItem="bH9-uL-U9o" firstAttribute="leading" secondItem="DaS-Oc-VZ5" secondAttribute="leadingMargin" id="5CV-Cy-x1s"/>
                                                 <constraint firstItem="sFI-04-xo7" firstAttribute="centerY" secondItem="DaS-Oc-VZ5" secondAttribute="centerY" constant="-29.5" id="9J2-24-Cad"/>
+                                                <constraint firstItem="HOn-pf-rbl" firstAttribute="leading" secondItem="RNk-c7-emd" secondAttribute="leading" id="A0l-wI-HFu"/>
                                                 <constraint firstItem="HOn-pf-rbl" firstAttribute="leading" secondItem="bH9-uL-U9o" secondAttribute="trailing" constant="8" symbolic="YES" id="CaC-dv-kAS"/>
                                                 <constraint firstItem="sFI-04-xo7" firstAttribute="top" secondItem="DaS-Oc-VZ5" secondAttribute="topMargin" id="Hsw-V3-Ow4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="HOn-pf-rbl" secondAttribute="trailing" id="Kbs-gR-4km"/>
                                                 <constraint firstItem="sFI-04-xo7" firstAttribute="leading" secondItem="DaS-Oc-VZ5" secondAttribute="leadingMargin" id="V9W-63-M1S"/>
                                                 <constraint firstItem="HOn-pf-rbl" firstAttribute="top" secondItem="RNk-c7-emd" secondAttribute="bottom" constant="8" id="frT-U7-nCI"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="HOn-pf-rbl" secondAttribute="bottom" constant="21" id="jhQ-t7-cmi"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HOn-pf-rbl" secondAttribute="bottom" constant="10" id="jhQ-t7-cmi"/>
                                                 <constraint firstItem="RNk-c7-emd" firstAttribute="top" secondItem="DaS-Oc-VZ5" secondAttribute="topMargin" constant="-8" id="kte-mf-YBi"/>
                                                 <constraint firstItem="RNk-c7-emd" firstAttribute="leading" secondItem="HOn-pf-rbl" secondAttribute="trailing" constant="-43" id="n39-Xj-u0g"/>
                                                 <constraint firstItem="RNk-c7-emd" firstAttribute="trailing" secondItem="DaS-Oc-VZ5" secondAttribute="trailingMargin" id="q7C-1f-W5K"/>
@@ -112,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="126"/>
+            <point key="canvasLocation" x="209" y="108"/>
         </scene>
     </scenes>
 </document>
