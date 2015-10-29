@@ -95,11 +95,10 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         if let tweetCell = cell {
             if let user = tweet.user {
                 
-                tweetCell.userName?.text = user.name
+                tweetCell.userName?.text = "Tweeted by: \(user.name)"
                 //        tweetCell.profileImage?.image = UIImage(data: tweet.user?.profileImageURL)
             }
             tweetCell.tweetTextLabel?.text = tweet.text
-            tweetCell.idLabel?.text = "Tweet id is: \(tweet.id)"
         }
         return cell!
     }
