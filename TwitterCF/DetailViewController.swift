@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppereance()
+        setupTweetDetailViewController()
         
         // Do any additional setup after loading the view.
     }
