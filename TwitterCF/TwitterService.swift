@@ -14,7 +14,7 @@ typealias TweetServiceCompletion = (String?, [Tweet]?) -> ()
 typealias UserServiceCompletion = (String?, User?) -> ()
 
 struct UserURL {
-   static let fetchHomeTimelineUrl = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
+    static let fetchHomeTimelineUrl = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
     static let verifyCredentialsUrl = NSURL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")
 }
 
@@ -33,7 +33,6 @@ class TwitterService {
                 
                 request.account = account
                 request.performRequestWithHandler({ (data, response, error) -> Void in
-                    
                     if let error = error {
                         print(error.description)
                         completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json could not be completed.", nil); return
@@ -52,8 +51,8 @@ class TwitterService {
                     default:
                         completion("ERROR : SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [unknown error].", nil)
                     }
-            })
-        }
+                })
+            }
         }
     }
     
@@ -84,8 +83,8 @@ class TwitterService {
                 case 400...499:
                     completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json returned status code \(response.statusCode) [user input error].", nil)
                 case 500...599:
-                completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json returned status code \(response.statusCode) [server side error].", nil)
-                
+                    completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json returned status code \(response.statusCode) [server side error].", nil)
+                    
                 default:
                     completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json returned status code \(response.statusCode) [unknown error].", nil)
                 }

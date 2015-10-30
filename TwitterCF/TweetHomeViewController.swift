@@ -32,6 +32,16 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.estimatedRowHeight = 101
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let spinner = UIRefreshControl(frame: CGRectMake(0.0, 0.0, 44.0, 44.0))
+        spinner.addTarget(self, action: "updateFeed:", forControlEvents: UIControlEvents.AllEvents)
+        self.tableView.addSubview(spinner)
+        
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "getTweets") //Use a selector
+        navigationItem.rightBarButtonItem = refreshButton
+        title = "Tweets"
     }
     
     func getAccount() {
@@ -101,6 +111,19 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
             tweetCell.tweetTextLabel?.text = tweet.text
         }
         return cell!
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "ShowDetailViewController" {
+            if let vc = segue.destinationViewController as? DetailViewController {
+                let indexPath = self.tableView.indexPathForSelectedRow
+                if let selectedRow = indexPath?.row {
+                    let selectedTweet = self.tweets[selectedRow]
+                    vc.tweet = selectedTweet
+                }
+            }
+        }
     }
 }
 
