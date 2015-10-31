@@ -62,9 +62,9 @@ class TwitterService {
         
         let urlString = "\(UserURL.userTimelineUrl!)\(username)"
         
-        let userTimelineURL = NSURL(string: urlString)
+        if let userTimelineURL = NSURL(string: urlString) {
         
-        if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: userTimelineURL!, parameters: nil) {
+        if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: userTimelineURL, parameters: nil) {
             
             if let account = self.sharedService.account {
                 
@@ -91,6 +91,7 @@ class TwitterService {
                     }
                 })
             }
+        }
         }
     }
     

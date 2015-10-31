@@ -22,12 +22,13 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
+        getTweets()
         
-        if let user = selectedTweet.user {
-            TwitterService.tweetsFromUserTimeLineForUsername(user.name) { (error, tweets) -> () in
-                //do something with tweets
-            }
-        }
+//        if let user = selectedTweet.user {
+//            TwitterService.tweetsFromUserTimeLineForUsername(user.name) { (error, tweets) -> () in
+//                //do something with tweets
+//            }
+//        }
         
 
 
@@ -89,7 +90,7 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("CustomTweetTableViewCell", forIndexPath: indexPath)
         return cell
     }
     

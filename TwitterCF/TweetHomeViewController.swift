@@ -22,7 +22,7 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
 
         self.setupTableView()
-        self.getTweets()
+//        self.getTweets()
         self.getAccount()
     }
     
@@ -47,6 +47,7 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
         self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
     }
+    
     func getAccount() {
         LoginService.loginTwitter ({ (error, account) -> () in
             
@@ -69,6 +70,7 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
                 print(error)
                 return
             }
+            
             if let user = user {
                 TwitterService.sharedService.user = user
                 self.getTweets()
@@ -129,7 +131,6 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
                     let selectedTweet = self.tweets[selectedRow]
                     let vc = segue.destinationViewController as! DetailViewController
                     vc.tweet = selectedTweet
-                
             }
         }
     }
