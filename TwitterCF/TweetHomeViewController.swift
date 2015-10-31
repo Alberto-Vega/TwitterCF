@@ -20,6 +20,7 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.setupTableView()
         self.getTweets()
         self.getAccount()
@@ -42,8 +43,10 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "getTweets") //Use a selector
         navigationItem.rightBarButtonItem = refreshButton
         title = "Tweets"
+        
+        let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
     }
-    
     func getAccount() {
         LoginService.loginTwitter ({ (error, account) -> () in
             
@@ -98,7 +101,7 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as? TweetTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CustomTweetTableViewCell", forIndexPath: indexPath) as? CustomTweetTableViewCell
         
         let tweet = self.tweets[indexPath.row]
         
@@ -113,15 +116,20 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell!
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("DetailViewController", sender: nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "ShowDetailViewController" {
-            if let vc = segue.destinationViewController as? DetailViewController {
-                let indexPath = self.tableView.indexPathForSelectedRow
-                if let selectedRow = indexPath?.row {
+        if segue.identifier == DetailViewController.identifier() {
+
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                    let selectedRow = indexPath.row
                     let selectedTweet = self.tweets[selectedRow]
+                    let vc = segue.destinationViewController as! DetailViewController
                     vc.tweet = selectedTweet
-                }
+                
             }
         }
     }

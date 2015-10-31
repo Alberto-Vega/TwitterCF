@@ -16,10 +16,11 @@ class LoginService {
     class func loginTwitter(completionHandler: TwitterLoginCompletion) {
         
         let accountStore = ACAccountStore()
+        //Give acount Store an account type
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
         
         accountStore.requestAccessToAccountsWithType(accountType, options: nil, completion: { (granted, error) -> Void in
-            
+           // This checks for an error from account
             if let _ = error {
                 completionHandler("ERROR: Request access to accounts returned an error.", nil); return
             }

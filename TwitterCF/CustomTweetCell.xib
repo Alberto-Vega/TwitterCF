@@ -7,25 +7,66 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="138" id="Nch-YB-HPo">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomTweetTableViewCell" rowHeight="188" id="Nch-YB-HPo" customClass="CustomTweetTableViewCell" customModule="TwitterCF" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="94"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nch-YB-HPo" id="wRp-K1-MA7">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="93"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6X-4P-B5n">
-                        <rect key="frame" x="119" y="8" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSc-yA-XwH">
+                        <rect key="frame" x="53" y="0.0" width="547" height="45"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rmP-ak-3Gk">
+                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="QlC-Ae-MhB"/>
+                            <constraint firstAttribute="width" constant="45" id="haK-Ac-xvu"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2X-qD-ecc">
+                        <rect key="frame" x="0.0" y="53" width="600" height="40"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <animations/>
+                <constraints>
+                    <constraint firstItem="V2X-qD-ecc" firstAttribute="top" secondItem="eSc-yA-XwH" secondAttribute="bottom" constant="8" symbolic="YES" id="0yq-Av-aVr"/>
+                    <constraint firstItem="eSc-yA-XwH" firstAttribute="leading" secondItem="rmP-ak-3Gk" secondAttribute="trailing" id="L1r-6T-brJ"/>
+                    <constraint firstItem="V2X-qD-ecc" firstAttribute="top" secondItem="eSc-yA-XwH" secondAttribute="bottom" id="Lug-94-UYT"/>
+                    <constraint firstItem="eSc-yA-XwH" firstAttribute="top" secondItem="wRp-K1-MA7" secondAttribute="top" id="QmI-mJ-KWG"/>
+                    <constraint firstAttribute="trailing" secondItem="eSc-yA-XwH" secondAttribute="trailing" id="aad-ot-38q"/>
+                    <constraint firstItem="rmP-ak-3Gk" firstAttribute="leading" secondItem="wRp-K1-MA7" secondAttribute="leading" id="ayd-kx-Pvz"/>
+                    <constraint firstItem="eSc-yA-XwH" firstAttribute="leading" secondItem="rmP-ak-3Gk" secondAttribute="trailing" constant="8" symbolic="YES" id="hM0-2Q-bFB"/>
+                    <constraint firstItem="rmP-ak-3Gk" firstAttribute="top" secondItem="wRp-K1-MA7" secondAttribute="top" id="kzn-Sw-AMe"/>
+                    <constraint firstAttribute="trailing" secondItem="V2X-qD-ecc" secondAttribute="trailing" id="oSS-ZE-2sj"/>
+                    <constraint firstAttribute="bottom" secondItem="V2X-qD-ecc" secondAttribute="bottom" id="q1f-h4-wEH"/>
+                    <constraint firstItem="V2X-qD-ecc" firstAttribute="top" secondItem="rmP-ak-3Gk" secondAttribute="bottom" constant="8" symbolic="YES" id="rRO-uf-Ksy"/>
+                    <constraint firstItem="V2X-qD-ecc" firstAttribute="leading" secondItem="wRp-K1-MA7" secondAttribute="leading" id="rUS-Oa-okk"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Lug-94-UYT"/>
+                        <exclude reference="L1r-6T-brJ"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <animations/>
-            <point key="canvasLocation" x="715" y="354"/>
+            <connections>
+                <outlet property="profileImage" destination="rmP-ak-3Gk" id="Tog-13-TP1"/>
+                <outlet property="tweetTextLabel" destination="eSc-yA-XwH" id="2LG-2x-pwJ"/>
+                <outlet property="userName" destination="V2X-qD-ecc" id="GiQ-YT-oSR"/>
+            </connections>
+            <point key="canvasLocation" x="855" y="283"/>
         </tableViewCell>
     </objects>
 </document>

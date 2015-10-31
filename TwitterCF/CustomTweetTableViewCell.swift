@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetTableViewCell: UITableViewCell {
+class CustomTweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -17,6 +17,10 @@ class TweetTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    class func identifier() -> String {
+        return "CustomTweetTableViewCell"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

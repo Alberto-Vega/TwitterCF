@@ -34,18 +34,33 @@ class DetailViewController: UIViewController {
     
     func setupAppereance() {
         if self.tweet.isRetweet {
-            if let rqUser = self.tweet?.rqUser {
-                self.navigationItem.title = rqUser.name
+            if let rqUser = self.tweet.rqUser?.name {
+                self.navigationItem.title = rqUser
+                return
             } else {
                 self.navigationItem.title = self.tweet.user?.name
+                return
             }
         }
-        if let user = self.tweet.user {
-            self.navigationItem.title = user.name
+        if let user = self.tweet.user?.name {
+            self.navigationItem.title = user
         }
     }
     
     func setupTweetDetailViewController() {
         self.tweetTextLabel.text = self.tweet.isRetweet ? self.tweet.rqText : self.tweet.text
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "UserTimelineTableView" {
+            
+            
+        let TimelineVC = segue.destinationViewController as! UserTimelineViewController
+            
+               TimelineVC.selectedTweet = tweet
+            
+
+            
+        }
+    }
 }
+

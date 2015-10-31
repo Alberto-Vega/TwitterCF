@@ -14,8 +14,11 @@ class TweetJSONParser {
         
         do {
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? [[String : AnyObject]] {
+                
                 var tweets = [Tweet]()
+                
                 for tweetObject in rootObject {
+                    print(tweetObject)
                     
                     if let text = tweetObject["text"] as? String,
                         id = tweetObject["id_str"] as? String,
@@ -60,17 +63,6 @@ class TweetJSONParser {
             }
         }
         return (false, nil)
-    }
-    
-    class func isQuote(tweetObject: [String : AnyObject]) -> Bool {
-        if let quoteStatus = tweetObject["is_quote_status"] as? Bool where quoteStatus == true {
-            if let quoteData = tweetObject["quoted_status"] as? [String : AnyObject] {
-                if let _ = quoteData["text"] as? String, _ = quoteData["user"] as? [String : AnyObject] {
-                    return true
-                }
-            }
-        }
-        return false
     }
     
     class func userFromData(user: [String :  AnyObject]) -> User? {
