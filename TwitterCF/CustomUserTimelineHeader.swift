@@ -1,26 +1,25 @@
 //
-//  TweetTableViewCell.swift
+//  CustomUserTimelineHeader.swift
 //  TwitterCF
 //
-//  Created by Alberto Vega Gonzalez on 10/27/15.
+//  Created by Alberto Vega Gonzalez on 11/1/15.
 //  Copyright © 2015 Alberto Vega Gonzalez. All rights reserved.
 //
 
 import UIKit
 
-class CustomTweetTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var profileImage: UIImageView!
+class CustomUserTimelineHeader: UITableViewHeaderFooterView {
+    
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var userProfileImage: UIImageView!
     
     var tweet: Tweet? {
         didSet {
-            if let tweet = self.tweet, user = tweet.user, text = self.tweet?.text {
-                self.tweetTextLabel.text = text
+            if let tweet = self.tweet, user = tweet.user {
                 self.userName.text = "Tweeted by: \(user.name)"
                 if let image = user.image {
-                    self.profileImage.image = image
+                    self.userProfileImage.image = image
                 } else {
                     if let url = NSURL(string: user.profileImageURL) {
                         let downloadQ = dispatch_queue_create("downloadQ", nil)
@@ -29,7 +28,7 @@ class CustomTweetTableViewCell: UITableViewCell {
                             
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 let image = UIImage(data: imageData)
-                                self.profileImage.image = image
+                                self.userProfileImage.image = image
                                 user.image = image
                             })
                         })
@@ -37,20 +36,5 @@ class CustomTweetTableViewCell: UITableViewCell {
                 }
             }
         }
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    class func identifier() -> String {
-        return "CustomTweetTableViewCell"
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }

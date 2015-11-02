@@ -22,7 +22,8 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
-        getTweets()
+        
+        self.getTweets()
         
 //        if let user = selectedTweet.user {
 //            TwitterService.tweetsFromUserTimeLineForUsername(user.name) { (error, tweets) -> () in
@@ -56,6 +57,7 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func setupTableView() {
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = 101
@@ -68,10 +70,24 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "getTweets")
         navigationItem.rightBarButtonItem = refreshButton
-        title = "Tweets"
+//        title = "Tweets"
+        
+//        var tableViewHeader = CustomUserTimelineHeader()
+//        var tableViewHeader = CustomUserTimelineHeader(frame:
+//        CGRectMake(0, 0, self.view.frame.width, 100))
+
+        //Creates background view
+//        let backgroundView: UIView? =
+//        tableViewHeader.addSubview(backgroundView!)
+        
         
         let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
         self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
+        
+        let customUserTimelineHeaderXib = UINib(nibName: "CustomUserTimelineHeader", bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(customUserTimelineHeaderXib, forHeaderFooterViewReuseIdentifier: "CustomUserTimelineHeader")
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,19 +97,36 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     
 // MARK: UITableView
     
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 100
-//    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 180
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let customUserTimelineHeader = CustomUserTimelineHeader(frame: CGRectMake(0, 0, self.view.frame.width, 180))
+                
+        return customUserTimelineHeader
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tweets.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CustomTweetTableViewCell", forIndexPath: indexPath)
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("CustomTweetTableViewCell", forIndexPath: indexPath) as! CustomTweetTableViewCell
+        
+        cell.tweet = tweets[indexPath.row]
+        
+//        if let tweetCell = cell {
+//            if let user = tweet.user {
+//                
+//                tweetCell.userName?.text = "Tweeted by: \(user.name)"
+//                //                        tweetCell.profileImage?.image = UIImage(data: tweet.user?.profileImageURL)
+//            }
+//            tweetCell.tweetTextLabel?.text = tweet.text
+//        }
         return cell
     }
-    
 
     /*
     // MARK: - Navigation

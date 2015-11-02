@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1021" y="108"/>
+            <point key="canvasLocation" x="923" y="108"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="ABu-dt-bas">
@@ -76,7 +76,6 @@
                                     <constraint firstAttribute="width" constant="80" id="WB6-ML-8ED"/>
                                     <constraint firstAttribute="height" constant="80" id="Xh2-P9-6lS"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="TLQ-JP-EU0" kind="show" identifier="UserTimelineTableView" id="Jx2-1k-CFy"/>
                                 </connections>
@@ -99,12 +98,13 @@
                     </view>
                     <connections>
                         <outlet property="tweetTextLabel" destination="GuS-ZS-t88" id="zrU-DT-obN"/>
+                        <outlet property="userImageButton" destination="IsC-MY-vbL" id="YyD-Hd-jFC"/>
                         <outlet property="userNameTextLabel" destination="pou-Ky-NDI" id="cG4-eT-Tqp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="olr-71-sOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1711" y="108"/>
+            <point key="canvasLocation" x="1665" y="108"/>
         </scene>
         <!--User Timeline View Controller-->
         <scene sceneID="Hbu-OI-VMu">

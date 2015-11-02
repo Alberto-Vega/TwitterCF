@@ -12,6 +12,7 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     @IBOutlet weak var tableView: UITableView!
+    
     var tweets = [Tweet]()
     
     func identifier() -> String {
@@ -26,26 +27,16 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         self.getAccount()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     
-    func setupTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.estimatedRowHeight = 101
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        let spinner = UIRefreshControl(frame: CGRectMake(0.0, 0.0, 44.0, 44.0))
-        spinner.addTarget(self, action: "updateFeed:", forControlEvents: UIControlEvents.AllEvents)
-        self.tableView.addSubview(spinner)
-        
-        let refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "getTweets") //Use a selector
-        navigationItem.rightBarButtonItem = refreshButton
-        title = "Tweets"
-        
-        let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
-        self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     func getAccount() {
@@ -95,6 +86,27 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    func setupTableView() {
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.estimatedRowHeight = 101
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let spinner = UIRefreshControl(frame: CGRectMake(0.0, 0.0, 44.0, 44.0))
+        spinner.addTarget(self, action: "updateFeed:", forControlEvents: UIControlEvents.AllEvents)
+        self.tableView.addSubview(spinner)
+        
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "getTweets") //Use a selector
+        navigationItem.rightBarButtonItem = refreshButton
+        title = "Tweets"
+        
+        let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
+    }
+    
+
+    
     // MARK: UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,17 +117,21 @@ class TweetHomeViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CustomTweetTableViewCell", forIndexPath: indexPath) as? CustomTweetTableViewCell
         
-        let tweet = self.tweets[indexPath.row]
         
-        if let tweetCell = cell {
-            if let user = tweet.user {
-                
-                tweetCell.userName?.text = "Tweeted by: \(user.name)"
-                //        tweetCell.profileImage?.image = UIImage(data: tweet.user?.profileImageURL)
-            }
-            tweetCell.tweetTextLabel?.text = tweet.text
-        }
+            cell?.tweet = self.tweets[indexPath.row]
+        
+//        if let tweetCell = cell {
+//            if let user = tweet.user {
+//                
+//                tweetCell.userName?.text = "Tweeted by: \(user.name)"
+////                        tweetCell.profileImage?.image = UIImage(data: tweet.user?.profileImageURL)
+//            }
+//            tweetCell.tweetTextLabel?.text = tweet.text
+//        }
+
+        
         return cell!
+
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="CustomUserTimelineHeader" id="Kx5-7W-ZyI" customClass="CustomUserTimelineHeader" customModule="TwitterCF" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lq7-cq-bo8">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-QD-c6Y">
+                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                            <animations/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="9iC-mF-hYQ"/>
+                                <constraint firstAttribute="width" constant="45" id="scl-17-BOP"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJO-kk-oK1">
+                            <rect key="frame" x="3" y="46" width="42" height="21"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="pSM-QD-c6Y" firstAttribute="top" secondItem="Lq7-cq-bo8" secondAttribute="top" id="1lT-NG-S6T"/>
+                        <constraint firstItem="pSM-QD-c6Y" firstAttribute="leading" secondItem="Lq7-cq-bo8" secondAttribute="leading" id="v7W-NJ-yGy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Lq7-cq-bo8" secondAttribute="bottom" id="0xY-kj-gC7"/>
+                <constraint firstAttribute="trailing" secondItem="Lq7-cq-bo8" secondAttribute="trailing" id="L4u-xD-9wE"/>
+                <constraint firstItem="Lq7-cq-bo8" firstAttribute="top" secondItem="Kx5-7W-ZyI" secondAttribute="top" id="Rhz-59-Npb"/>
+                <constraint firstItem="Lq7-cq-bo8" firstAttribute="leading" secondItem="Kx5-7W-ZyI" secondAttribute="leading" id="k6t-lg-lGD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="userName" destination="ZJO-kk-oK1" id="egY-yw-mFW"/>
+                <outlet property="userProfileImage" destination="pSM-QD-c6Y" id="KFO-Te-V8m"/>
+            </connections>
+            <point key="canvasLocation" x="0.0" y="-54"/>
+        </view>
+    </objects>
+</document>
