@@ -37,4 +37,8 @@ class CustomUserTimelineHeader: UITableViewHeaderFooterView {
             }
         }
     }
+    
+    class func view() -> UIView {
+        return UINib(nibName: "UserTimelineHeader", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! UIView
+    }
 }

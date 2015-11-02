@@ -11,20 +11,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lq7-cq-bo8">
+                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lq7-cq-bo8">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-QD-c6Y">
-                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                             <animations/>
                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="45" id="9iC-mF-hYQ"/>
-                                <constraint firstAttribute="width" constant="45" id="scl-17-BOP"/>
+                                <constraint firstAttribute="height" constant="60" id="9iC-mF-hYQ"/>
+                                <constraint firstAttribute="width" constant="60" id="scl-17-BOP"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJO-kk-oK1">
-                            <rect key="frame" x="3" y="46" width="42" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJO-kk-oK1">
+                            <rect key="frame" x="0.0" y="68" width="42" height="20"/>
                             <animations/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -32,9 +32,10 @@
                         </label>
                     </subviews>
                     <animations/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="pSM-QD-c6Y" firstAttribute="top" secondItem="Lq7-cq-bo8" secondAttribute="top" id="1lT-NG-S6T"/>
+                        <constraint firstItem="ZJO-kk-oK1" firstAttribute="leading" secondItem="Lq7-cq-bo8" secondAttribute="leading" id="EK8-lg-fB8"/>
+                        <constraint firstItem="ZJO-kk-oK1" firstAttribute="top" secondItem="pSM-QD-c6Y" secondAttribute="bottom" constant="8" symbolic="YES" id="sDy-hw-zUC"/>
                         <constraint firstItem="pSM-QD-c6Y" firstAttribute="leading" secondItem="Lq7-cq-bo8" secondAttribute="leading" id="v7W-NJ-yGy"/>
                     </constraints>
                 </view>

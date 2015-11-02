@@ -102,9 +102,9 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let customUserTimelineHeader = CustomUserTimelineHeader(frame: CGRectMake(0, 0, self.view.frame.width, 180))
-                
-        return customUserTimelineHeader
+//        let customUserTimelineHeader = CustomUserTimelineHeader(frame: CGRectMake(0, 0, self.view.frame.width, 180))
+        
+        return CustomUserTimelineHeader.view()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

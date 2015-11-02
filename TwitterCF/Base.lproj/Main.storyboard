@@ -8,7 +8,7 @@
         <!--Tweet Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="TweetHomeViewController" id="BYZ-38-t0r" customClass="TweetHomeViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TweetHomeViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="TweetHomeViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -109,7 +109,7 @@
         <!--User Timeline View Controller-->
         <scene sceneID="Hbu-OI-VMu">
             <objects>
-                <viewController id="TLQ-JP-EU0" customClass="UserTimelineViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="TLQ-JP-EU0" customClass="UserTimelineViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HK6-mp-twF"/>
                         <viewControllerLayoutGuide type="bottom" id="hGL-Uf-jC2"/>
