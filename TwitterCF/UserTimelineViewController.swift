@@ -70,16 +70,6 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "getTweets")
         navigationItem.rightBarButtonItem = refreshButton
-//        title = "Tweets"
-        
-//        var tableViewHeader = CustomUserTimelineHeader()
-//        var tableViewHeader = CustomUserTimelineHeader(frame:
-//        CGRectMake(0, 0, self.view.frame.width, 100))
-
-        //Creates background view
-//        let backgroundView: UIView? =
-//        tableViewHeader.addSubview(backgroundView!)
-        
         
         let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
         self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
@@ -87,7 +77,18 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         let customUserTimelineHeaderXib = UINib(nibName: "CustomUserTimelineHeader", bundle: NSBundle.mainBundle())
         self.tableView.registerNib(customUserTimelineHeaderXib, forHeaderFooterViewReuseIdentifier: "CustomUserTimelineHeader")
         
-
+        }
+    
+    override func viewWillAppear(animated: Bool) {
+    
+        super.viewWillAppear(animated)
+        
+        let customUserTimelineHeader = CustomUserTimelineHeader()
+        
+        customUserTimelineHeader.userName?.text = "Testing"
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,17 +96,19 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-// MARK: UITableView
+// MARK: UITableViewHeader
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 180
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let customUserTimelineHeader = CustomUserTimelineHeader(frame: CGRectMake(0, 0, self.view.frame.width, 180))
         
         return CustomUserTimelineHeader.view()
     }
+    
+    // MARK: UITableView
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tweets.count
@@ -116,6 +119,9 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("CustomTweetTableViewCell", forIndexPath: indexPath) as! CustomTweetTableViewCell
         
         cell.tweet = tweets[indexPath.row]
+        
+//        customUserTimelineHeader.tweet = tweets[indexPath.row]
+        
         
 //        if let tweetCell = cell {
 //            if let user = tweet.user {
