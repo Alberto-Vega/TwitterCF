@@ -25,7 +25,7 @@ class Tweet {
         self.isRetweet = isRetweet
         self.rqUser = rqUser
         self.rqText = rqText
-     }
+    }
 }
 
 

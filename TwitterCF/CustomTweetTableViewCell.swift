@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomTweetTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
@@ -38,7 +38,7 @@ class CustomTweetTableViewCell: UITableViewCell {
             }
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -47,10 +47,9 @@ class CustomTweetTableViewCell: UITableViewCell {
     class func identifier() -> String {
         return "CustomTweetTableViewCell"
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 }

@@ -9,36 +9,8 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-        
+    
     var tweet: Tweet!
-//   var tweet: Tweet! {
-//        didSet {
-//            if let tweet = self.tweet, user = tweet.user, text = self.tweet?.text {
-////                self.tweetTextLabel.text = text
-////                self.userNameTextLabel.text = "Tweeted by: \(user.name)"
-//                if let image = user.image {
-//                    if let backgroundImage = self.userImageButton {
-//                    self.userImageButton.setBackgroundImage(image, forState: .Normal)
-//                    }
-//                } else {
-//                    if let url = NSURL(string: user.profileImageURL) {
-//                        let downloadQ = dispatch_queue_create("downloadQ", nil)
-//                        dispatch_async(downloadQ, { () -> Void in
-//                            let imageData = NSData(contentsOfURL: url)!
-//                            
-//                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                                let image = UIImage(data: imageData)
-//                                self.userImageButton.setBackgroundImage(image, forState: .Normal)
-//
-////                                self.profileImage.image = image
-////                                user.image = image
-//                            })
-//                        })
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     class func identifier() -> String {
         return "DetailViewController"
@@ -53,20 +25,17 @@ class DetailViewController: UIViewController {
         setupAppereance()
         setupTweetDetailViewController()
         setUpButtonImage()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setupAppereance() {
         if self.tweet.isRetweet {
             if let rqUser = self.tweet?.rqUser?.name {
                 self.navigationItem.title = rqUser
-//                self.userImageButton.imageView = rqUser
+                //                self.userImageButton.backgroundImageForState(.Normal) = rqUser
                 return
             } else {
                 self.navigationItem.title = self.tweet?.user?.name
@@ -84,50 +53,39 @@ class DetailViewController: UIViewController {
     }
     
     func setUpButtonImage() {
-        if let tweet = self.tweet, user = tweet.user, text = self.tweet?.text {
-            ////                self.tweetTextLabel.text = text
-            ////                self.userNameTextLabel.text = "Tweeted by: \(user.name)"
-
-        
-    if let image = user.image, backgroundImage = user.backgroundImage {
-        self.tweet.user?.image = image
-        self.userImageButton.setBackgroundImage(image, forState: .Normal)
-        self.tweet.user?.backgroundImage = backgroundImage
-        
-        
-    } else {
-        if let url = NSURL(string: user.profileImageURL), backgroundURL = NSURL(string: user.backgroundProfileImage!) {
- 
-            let downloadQ = dispatch_queue_create("downloadQ", nil)
-            dispatch_async(downloadQ, { () -> Void in
-                let imageData = NSData(contentsOfURL: url)!
-                let backgroundImageData = NSData(contentsOfURL: backgroundURL)!
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    let image = UIImage(data: imageData)
-                    let backgroundImage = UIImage(data: backgroundImageData)
-                    self.tweet.user?.image = image
-                    self.tweet.user?.backgroundImage = backgroundImage
-                    self.userImageButton.setBackgroundImage(image, forState: .Normal)
+        if let tweet = self.tweet, user = tweet.user {
+            
+            if let image = user.image, backgroundImage = user.backgroundImage {
+                self.tweet.user?.image = image
+                self.userImageButton.setBackgroundImage(image, forState: .Normal)
+                self.tweet.user?.backgroundImage = backgroundImage
+                
+                
+            } else {
+                if let url = NSURL(string: user.profileImageURL), backgroundURL = NSURL(string: user.backgroundProfileImage!) {
                     
-                    //                                self.profileImage.image = image
-                    //                                user.image = image
-                    
-                })
-            })
-        }
+                    let downloadQ = dispatch_queue_create("downloadQ", nil)
+                    dispatch_async(downloadQ, { () -> Void in
+                        let imageData = NSData(contentsOfURL: url)!
+                        let backgroundImageData = NSData(contentsOfURL: backgroundURL)!
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            let image = UIImage(data: imageData)
+                            let backgroundImage = UIImage(data: backgroundImageData)
+                            self.tweet.user?.image = image
+                            self.tweet.user?.backgroundImage = backgroundImage
+                            self.userImageButton.setBackgroundImage(image, forState: .Normal)
+                        })
+                    })
+                }
             }
         }
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "UserTimelineTableView" {
             
-            
-        let TimelineVC = segue.destinationViewController as! UserTimelineViewController
-            
-               TimelineVC.selectedTweet = tweet
-
-            
+            let TimelineVC = segue.destinationViewController as! UserTimelineViewController
+            TimelineVC.selectedTweet = tweet
         }
     }
 }

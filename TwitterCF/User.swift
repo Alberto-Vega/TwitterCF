@@ -17,11 +17,8 @@ class User {
     var backgroundImage: UIImage?
     
     init(name: String, profileImageURL: String, backgroundImageURL: String) {
-    self.name = name
-    self.profileImageURL = profileImageURL
-    self.backgroundProfileImage = backgroundImageURL
-    
-    
-
+        self.name = name
+        self.profileImageURL = profileImageURL
+        self.backgroundProfileImage = backgroundImageURL
     }
 }

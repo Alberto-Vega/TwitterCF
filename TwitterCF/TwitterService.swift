@@ -63,35 +63,35 @@ class TwitterService {
         let urlString = "\(UserURL.userTimelineUrl!)\(username)"
         
         if let userTimelineURL = NSURL(string: urlString) {
-        
-        if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: userTimelineURL, parameters: nil) {
             
-            if let account = self.sharedService.account {
+            if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: userTimelineURL, parameters: nil) {
                 
-                request.account = account
-                request.performRequestWithHandler({ (data, response, error) -> Void in
-                    if let error = error {
-                        print(error.description)
-                        completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json could not be completed.", nil); return
-                    }
+                if let account = self.sharedService.account {
                     
-                    print(response.description)
-                    
-                    switch response.statusCode {
-                    case 200...299:
-                        let tweets = TweetJSONParser.tweetFromJSONData(data)
-                        print(tweets)
-                        completion(nil, tweets)
-                    case 400...499:
-                        completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [user input error].", nil)
-                    case 500...599:
-                        completion("ERROR : SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [server side error].", nil)
-                    default:
-                        completion("ERROR : SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [unknown error].", nil)
-                    }
-                })
+                    request.account = account
+                    request.performRequestWithHandler({ (data, response, error) -> Void in
+                        if let error = error {
+                            print(error.description)
+                            completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json could not be completed.", nil); return
+                        }
+                        
+                        print(response.description)
+                        
+                        switch response.statusCode {
+                        case 200...299:
+                            let tweets = TweetJSONParser.tweetFromJSONData(data)
+                            print(tweets)
+                            completion(nil, tweets)
+                        case 400...499:
+                            completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [user input error].", nil)
+                        case 500...599:
+                            completion("ERROR : SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [server side error].", nil)
+                        default:
+                            completion("ERROR : SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [unknown error].", nil)
+                        }
+                    })
+                }
             }
-        }
         }
     }
     
