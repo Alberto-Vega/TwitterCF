@@ -11,6 +11,9 @@ import UIKit
 class UserTimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var headerBackgroundImage: UIImageView!
+    @IBOutlet weak var userProfileImageHeader: UIImageView!
+    @IBOutlet weak var userNameHeaderLabel: UILabel!
     
     var tweets = [Tweet]()
     var selectedTweet: Tweet!
@@ -22,18 +25,7 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
-        
         self.getTweets()
-        
-//        if let user = selectedTweet.user {
-//            TwitterService.tweetsFromUserTimeLineForUsername(user.name) { (error, tweets) -> () in
-//                //do something with tweets
-//            }
-//        }
-        
-
-
-        // Do any additional setup after loading the view.
     }
     
     func getTweets() {
@@ -74,18 +66,20 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
         self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
         
-        let customUserTimelineHeaderXib = UINib(nibName: "CustomUserTimelineHeader", bundle: NSBundle.mainBundle())
-        self.tableView.registerNib(customUserTimelineHeaderXib, forHeaderFooterViewReuseIdentifier: "CustomUserTimelineHeader")
+//        let customUserTimelineHeaderXib = UINib(nibName: "CustomUserTimelineHeader", bundle: NSBundle.mainBundle())
+//        self.tableView.registerNib(customUserTimelineHeaderXib, forHeaderFooterViewReuseIdentifier: "CustomUserTimelineHeader")
         
-        }
+        self.userProfileImageHeader.image = self.selectedTweet.user?.image
+        self.userNameHeaderLabel.text = self.selectedTweet.user?.name
+        self.headerBackgroundImage.image = self.selectedTweet.user?.backgroundImage
+    }
     
     override func viewWillAppear(animated: Bool) {
     
         super.viewWillAppear(animated)
         
-        let customUserTimelineHeader = CustomUserTimelineHeader()
         
-        customUserTimelineHeader.userName?.text = "Testing"
+//        customUserTimelineHeader.userName?.text = "Testing"
         
         
         
@@ -98,15 +92,15 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
     
 // MARK: UITableViewHeader
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 180
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        return CustomUserTimelineHeader.view()
-    }
-    
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 180
+//    }
+//    
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        
+//        return CustomUserTimelineHeader.view()
+//    }
+//    
     // MARK: UITableView
 
     
@@ -119,29 +113,7 @@ class UserTimelineViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("CustomTweetTableViewCell", forIndexPath: indexPath) as! CustomTweetTableViewCell
         
         cell.tweet = tweets[indexPath.row]
-        
-//        customUserTimelineHeader.tweet = tweets[indexPath.row]
-        
-        
-//        if let tweetCell = cell {
-//            if let user = tweet.user {
-//                
-//                tweetCell.userName?.text = "Tweeted by: \(user.name)"
-//                //                        tweetCell.profileImage?.image = UIImage(data: tweet.user?.profileImageURL)
-//            }
-//            tweetCell.tweetTextLabel?.text = tweet.text
-//        }
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

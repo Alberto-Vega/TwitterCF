@@ -13,10 +13,14 @@ class User {
     let name: String
     let profileImageURL: String
     var image: UIImage?
+    var backgroundProfileImage: String?
+    var backgroundImage: UIImage?
     
-    init(name: String, profileImageURL: String) {
+    init(name: String, profileImageURL: String, backgroundImageURL: String) {
     self.name = name
     self.profileImageURL = profileImageURL
+    self.backgroundProfileImage = backgroundImageURL
+    
     
 
     }

@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
+        
     var tweet: Tweet!
 //   var tweet: Tweet! {
 //        didSet {
@@ -50,7 +50,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupAppereance()
+        setupAppereance()
         setupTweetDetailViewController()
         setUpButtonImage()
         
@@ -89,24 +89,33 @@ class DetailViewController: UIViewController {
             ////                self.userNameTextLabel.text = "Tweeted by: \(user.name)"
 
         
-    if let image = user.image {
-                            self.userImageButton.setBackgroundImage(image, forState: .Normal)
-                        } else {
-                            if let url = NSURL(string: user.profileImageURL) {
-                                let downloadQ = dispatch_queue_create("downloadQ", nil)
-                                dispatch_async(downloadQ, { () -> Void in
-                                    let imageData = NSData(contentsOfURL: url)!
+    if let image = user.image, backgroundImage = user.backgroundImage {
+        self.tweet.user?.image = image
+        self.userImageButton.setBackgroundImage(image, forState: .Normal)
+        self.tweet.user?.backgroundImage = backgroundImage
         
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        let image = UIImage(data: imageData)
-                                        self.userImageButton.setBackgroundImage(image, forState: .Normal)
         
-        //                                self.profileImage.image = image
-        //                                user.image = image
-                                    })
-                                })
-                            }
-                        }
+    } else {
+        if let url = NSURL(string: user.profileImageURL), backgroundURL = NSURL(string: user.backgroundProfileImage!) {
+ 
+            let downloadQ = dispatch_queue_create("downloadQ", nil)
+            dispatch_async(downloadQ, { () -> Void in
+                let imageData = NSData(contentsOfURL: url)!
+                let backgroundImageData = NSData(contentsOfURL: backgroundURL)!
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let image = UIImage(data: imageData)
+                    let backgroundImage = UIImage(data: backgroundImageData)
+                    self.tweet.user?.image = image
+                    self.tweet.user?.backgroundImage = backgroundImage
+                    self.userImageButton.setBackgroundImage(image, forState: .Normal)
+                    
+                    //                                self.profileImage.image = image
+                    //                                user.image = image
+                    
+                })
+            })
+        }
+            }
         }
     }
 
@@ -117,7 +126,6 @@ class DetailViewController: UIViewController {
         let TimelineVC = segue.destinationViewController as! UserTimelineViewController
             
                TimelineVC.selectedTweet = tweet
-            
 
             
         }

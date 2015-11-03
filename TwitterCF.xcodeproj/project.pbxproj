@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BF0CDC0F1BDFD7B100AEAFD9 /* CustomTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0CDC0E1BDFD7B100AEAFD9 /* CustomTweetTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		BF0F83751BE6ED4C0013E712 /* UserTimelineHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0F83741BE6ED4C0013E712 /* UserTimelineHeader.xib */; settings = {ASSET_TAGS = (); }; };
-		BF0F83771BE6F0DD0013E712 /* CustomUserTimelineHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0F83761BE6F0DD0013E712 /* CustomUserTimelineHeader.swift */; settings = {ASSET_TAGS = (); }; };
 		BF210D631BE1AF9200E121F0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF210D621BE1AF9200E121F0 /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		BF29CA4F1BE6B0580004D776 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF29CA4E1BE6B0580004D776 /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
 		BF29CA511BE6C3D30004D776 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CA501BE6C3D30004D776 /* ImageFetcher.swift */; settings = {ASSET_TAGS = (); }; };
@@ -49,8 +47,6 @@
 
 /* Begin PBXFileReference section */
 		BF0CDC0E1BDFD7B100AEAFD9 /* CustomTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTweetTableViewCell.swift; sourceTree = "<group>"; };
-		BF0F83741BE6ED4C0013E712 /* UserTimelineHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTimelineHeader.xib; sourceTree = "<group>"; };
-		BF0F83761BE6F0DD0013E712 /* CustomUserTimelineHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUserTimelineHeader.swift; sourceTree = "<group>"; };
 		BF210D621BE1AF9200E121F0 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BF29CA4E1BE6B0580004D776 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BF29CA501BE6C3D30004D776 /* ImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
@@ -105,6 +101,7 @@
 		BF4E3C841BDED52300C7248F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF29CA501BE6C3D30004D776 /* ImageFetcher.swift */,
 				BF7046B81BE034A600363D91 /* LoginService.swift */,
 				BF7046BA1BE0387100363D91 /* TwitterService.swift */,
 				BF7046BC1BE03C5200363D91 /* User.swift */,
@@ -117,11 +114,8 @@
 		BF4E3C851BDED53500C7248F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF0F83761BE6F0DD0013E712 /* CustomUserTimelineHeader.swift */,
-				BF0CDC0E1BDFD7B100AEAFD9 /* CustomTweetTableViewCell.swift */,
 				BFAE9B6C1BDEBF6B00BFC117 /* TweetHomeViewController.swift */,
 				BF210D621BE1AF9200E121F0 /* DetailViewController.swift */,
-				BF29CA501BE6C3D30004D776 /* ImageFetcher.swift */,
 				BF63A8A91BE3F3F10005B1C1 /* UserTimelineViewController.swift */,
 			);
 			name = Controllers;
@@ -130,11 +124,18 @@
 		BF4E3C861BDED54300C7248F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BF63A8A71BE2C3180005B1C1 /* CustomTweetCell.xib */,
 				BFAE9B6E1BDEBF6B00BFC117 /* Main.storyboard */,
-				BF0F83741BE6ED4C0013E712 /* UserTimelineHeader.xib */,
+				BF63A8A71BE2C3180005B1C1 /* CustomTweetCell.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		BF7410EA1BE817190084B825 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				BF0CDC0E1BDFD7B100AEAFD9 /* CustomTweetTableViewCell.swift */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		BFAE9B5E1BDEBF6B00BFC117 = {
@@ -164,6 +165,7 @@
 				BFAE9B6A1BDEBF6B00BFC117 /* AppDelegate.swift */,
 				BF4E3C851BDED53500C7248F /* Controllers */,
 				BF4E3C841BDED52300C7248F /* Model */,
+				BF7410EA1BE817190084B825 /* CustomCell */,
 				BF4E3C861BDED54300C7248F /* Views */,
 				BFAE9B711BDEBF6B00BFC117 /* Assets.xcassets */,
 				BFAE9B731BDEBF6B00BFC117 /* LaunchScreen.storyboard */,
@@ -297,7 +299,6 @@
 			files = (
 				BFAE9B751BDEBF6B00BFC117 /* LaunchScreen.storyboard in Resources */,
 				BFAE9B721BDEBF6B00BFC117 /* Assets.xcassets in Resources */,
-				BF0F83751BE6ED4C0013E712 /* UserTimelineHeader.xib in Resources */,
 				BF63A8A81BE2C3180005B1C1 /* CustomTweetCell.xib in Resources */,
 				BFAE9B701BDEBF6B00BFC117 /* Main.storyboard in Resources */,
 				BF4E3C8A1BDED5FD00C7248F /* tweet.json in Resources */,
@@ -329,7 +330,6 @@
 				BF210D631BE1AF9200E121F0 /* DetailViewController.swift in Sources */,
 				BF4E3C881BDED56D00C7248F /* TweetJSONParser.swift in Sources */,
 				BF63A8AA1BE3F3F10005B1C1 /* UserTimelineViewController.swift in Sources */,
-				BF0F83771BE6F0DD0013E712 /* CustomUserTimelineHeader.swift in Sources */,
 				BF7046B91BE034A600363D91 /* LoginService.swift in Sources */,
 				BF7046BB1BE0387100363D91 /* TwitterService.swift in Sources */,
 				BF4E3C831BDED4AB00C7248F /* Tweet.swift in Sources */,
